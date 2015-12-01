@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
   		end
   end
 
+    def json_defaults
+      request.format = :json unless params[:format]
+    end
+
   rescue_from ActiveRecord::RecordNotFound do |error|
   		render json: { error: "Could not find requested object: #{error.message }" },
   	status: not_found

@@ -1,15 +1,16 @@
 class RegistrationsController < ApplicationController
   def new
   	@user = User.new
-  	render :new
+  	render "new.json.jbuilder", status: :ok
   end
 
   def create
   	@user = User.new(user_params)
   	if @user.save
-  		redirect_to posts_path
+  		render "create.json.jbuilder", status: :created
   	else
-  		render :new
+  		render json: { errors: @user.errors.full_messages },
+        	status: :unprocessable_entity
   	end
   end
 
