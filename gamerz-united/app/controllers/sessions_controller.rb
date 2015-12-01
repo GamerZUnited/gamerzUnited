@@ -9,13 +9,4 @@ class SessionsController < ApplicationController
           status: :unauthorized
   	end
   end
-
-  def new
-  	render "new.json.jbuilder", status: :ok
-  end
-
-  def destroy
-  	session[:user_id] = nil
-    redirect_to login_index_path
-  end
 end
