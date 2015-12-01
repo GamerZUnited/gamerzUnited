@@ -3,14 +3,15 @@ class SessionsController < ApplicationController
   	user = User.find_by!(gamertag: params[:gamertag])
   	if user.authenticate(params [password])
   		session[:user_id] = user.id 
-  		redirect_to posts_path 
+  		  render "create.json.jbuilder", status: :ok 
   	else
-  		redirect_to login_index_path
+  		  render json: { error: "Could not find user for #{params[:username]} or wrong password." },
+          status: :unauthorized
   	end
   end
 
   def new
-  	render :new
+  	render "new.json.jbuilder", status: :ok
   end
 
   def destroy
