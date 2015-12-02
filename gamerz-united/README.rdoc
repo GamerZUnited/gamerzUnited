@@ -1,28 +1,123 @@
-== README
+#Main Backend app URL:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+`https://morning-temple-4972.herokuapp.com`
 
-Things you may want to cover:
+#ADMIN
+##To Signup a user
 
-* Ruby version
+###Send `post` request to `/signup`
 
-* System dependencies
+Must provide these parameters:
 
-* Configuration
+```
+first_name
+last_name
+email
+username
+password
+age
+sex
+```
 
-* Database creation
+##To Login
 
-* Database initialization
+###Send `post` request to `/login`
 
-* How to run the test suite
+Must provide these parameters:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+username
+password
+```
 
-* Deployment instructions
+You will receive the following JSON:
 
-* ...
+```javascript
+{ 
+	access_token: "580dc0baa883a73a276c6558e21ec01e",
+	first_name: "Bob",
+	last_name: "Johnson",
+	email: "bob@email.com",
+	username: "johnson"
+	sex: "male"
+	age: 34
+}
+```
+
+##To Add a Post
+
+###Send `post` request to `/posts`
+
+Must provide these parameters:
+
+```
+title
+content
+```
+
+Headers:
+
+```
+Auth-Token
+```
+
+You will receive a JSON like:
+
+```javascript
+{ 
+	id: 1
+	title: “2k16.”, 
+	content: "I win all the time"
+}
+```
+
+...
+
+#POSTS
+
+##To Show All Posts 
+
+###Send `get` request to `/posts`
+
+Required parameters that you should provide:
+
+Headers:
+
+```
+Auth-Token
+```
+
+You will receive an array of key value pairs of each post title, post content, and post id:
+
+```javascript
+[
+	{ 
+		id: 1
+		title: “2k16.”, 
+		content: "I win all the time"
+	},
+	{
+		id: 2
+		title: "Madden 100."
+		content: "I win again"
+	}
+]
+```
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
