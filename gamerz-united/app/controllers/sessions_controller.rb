@@ -8,8 +8,4 @@ class SessionsController < ApplicationController
         status: :unauthorized
   	end
   end
-
-  def new
-      redirect_to posts_path
-    end
 end

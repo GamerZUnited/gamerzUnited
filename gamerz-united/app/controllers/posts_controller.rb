@@ -9,12 +9,7 @@ class PostsController < ApplicationController
   def create
     post = current_user.posts.create(title: params[:title],
                      content: params[:content])
-      redirect_to posts_path
-  end
-
-  def new
-    @post = Post.new
-      redirect_to posts_path
+      render "index.json.jbuilder", status: :ok
   end
 
   def show
@@ -32,7 +27,7 @@ class PostsController < ApplicationController
     else
       flash[:notice] = "Can't destroy this post."
     end
-    redirect_to posts_path
+    render "index.json.jbuilder", status: :ok
   end
     
     # private
