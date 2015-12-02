@@ -20,10 +20,10 @@ Rails.application.routes.draw do
   ## Sessions Routes
   # get "login",    to: "sessions#new"
   # delete "login", to: "sessions#destroy"
-  resources :login, only: [:new, :create, :destroy], controller: "sessions"
+  resources :login, only: [:create], controller: "sessions"
 
   ## Posts Routes
-  resources :posts, except: [:edit, :update]
+  resources :posts, except: [:edit, :update, :new]
 
   # Example resource route with options:
   #   resources :products do
