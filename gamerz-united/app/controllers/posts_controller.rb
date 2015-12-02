@@ -24,16 +24,16 @@ class PostsController < ApplicationController
     #   format.json { render json: @post }
   end
 
-  def destroy
-    post = Post.find(params[:id])
-    if current_user.id == post.user_id
-      flash[:notice] = "Destroyed the post: #{post.title}"
-      post.destroy
-    else
-      flash[:notice] = "Can't destroy this post."
-    end
-    redirect_to posts_path
-  end
+  # def destroy
+  #   post = Post.find(params[:id])
+  #   if current_user.id == post.user_id
+  #     flash[:notice] = "Destroyed the post: #{post.title}"
+  #     post.destroy
+  #   else
+  #     flash[:notice] = "Can't destroy this post."
+  #   end
+  #   redirect_to posts_path
+  # end
     
     # private
     # def post_params
