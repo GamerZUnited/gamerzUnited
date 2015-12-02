@@ -5,7 +5,11 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-  	@user = User.new(user_params)
+  	@user = User.new(username: params[:username],
+                     email: params[:email],
+                     password: params[:password],
+                     first_name: params[:first_name],
+                     last_name: params[:last_name])
   	if @user.save
   		render "create.json.jbuilder", status: :created
   	else
@@ -14,9 +18,9 @@ class RegistrationsController < ApplicationController
   	end
   end
 
-  	private
-  	def user_params
-  		params.require(:user).permit(:first_name, :last_name, :username,
-  									 :email, :password)
-  	end
+  	# private
+  	# def user_params
+  	# 	params(:user).permit(:first_name, :last_name, :username,
+  	# 								 :email, :password)
+  	# end
 end

@@ -7,7 +7,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = current_user.posts.create(post_params)
+    post = current_user.posts.create(title: params[:title],
+                     content: params[:content])
       redirect_to posts_path
   end
 
@@ -18,7 +19,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-      render "index.json.jbuilder", status: :ok 
+      render "show.json.jbuilder", status: :ok 
     # respond_to do |format|
     #   format.json { render json: @post }
   end
@@ -34,8 +35,8 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
     
-    private
-    def post_params
-      params.require(:post).permit(:title, :content)
-    end
+    # private
+    # def post_params
+    #   params(:post).permit(:title, :content)
+    # end
 end
