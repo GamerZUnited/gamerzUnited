@@ -14,13 +14,18 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
 
+  root to: "posts#index"
+
   ## Registrations Routes
-  resources :signup, only: [:new, :create], controller: "registrations"
+  # resources :signup, only: [:new, :create], controller: "registrations"
+  post "signup",  to: "registrations#create"
+  get "signup/new", to: "registrations#new"
 
   ## Sessions Routes
   # get "login",    to: "sessions#new"
   # delete "login", to: "sessions#destroy"
-  resources :login, only: [:create], controller: "sessions"
+  # resources :login, only: [:create], controller: "sessions"
+  get   "login",  to: "sessions#create"
 
   ## Posts Routes
   resources :posts, except: [:edit, :update, :new]
