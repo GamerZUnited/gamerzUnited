@@ -1,1 +1,3 @@
-json.extract! @post, :title, :content
+json.array! @posts do |post|
+  json.extract! post, :id, :title, :content
+end
