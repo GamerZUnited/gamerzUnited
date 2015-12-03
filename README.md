@@ -1,6 +1,6 @@
 #Main Backend app URL:
 
-
+`https://morning-temple-4972.herokuapp.com`
 
 #ADMIN
 ##To Signup a user
