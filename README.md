@@ -10,13 +10,13 @@
 Must provide these parameters:
 
 ```
-first_name
-last_name
+first_name 
+last_name  
 email
 username
 password
-age
-sex
+age (optional)
+sex (optional)
 ```
 
 ##To Login
@@ -39,8 +39,8 @@ You will receive the following JSON:
 	last_name: "Johnson",
 	email: "bob@email.com",
 	username: "johnson"
-	sex: "male"
-	age: 34
+	sex: "male"  (optional upon signup)
+	age: 34		 (optional upon signup)
 }
 ```
 
