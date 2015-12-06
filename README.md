@@ -58,16 +58,14 @@ content
 Headers:
 
 ```
-Auth-Token
+access_token
 ```
 
 You will receive a JSON like:
 
 ```javascript
 { 
-	id: 1
-	title: “2k16.”, 
-	content: "I win all the time"
+	[]
 }
 ```
 
