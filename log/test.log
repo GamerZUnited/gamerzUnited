@@ -1,0 +1,300 @@
+  [1m[36m (119.7ms)[0m  [1mDROP DATABASE IF EXISTS "gamerz-test"[0m
+  [1m[35m (341.5ms)[0m  CREATE DATABASE "gamerz-test" ENCODING = 'utf8'
+  [1m[36mSQL (0.7ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (7.8ms)[0m  CREATE TABLE "posts" ("id" serial primary key, "user_id" integer, "title" character varying, "written_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) 
+  [1m[36m (2.6ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "email" character varying NOT NULL, "password_digest" character varying, "access_token" character varying, "age" integer, "sex" character varying, "avatar_file_name" character varying, "avatar_content_type" character varying, "avatar_file_size" integer, "avatar_updated_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "username" character varying) [0m
+  [1m[35m (1.5ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (1.1ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151202155846')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151201041941')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151201043648')[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151201051120')
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (19.1ms)[0m  ALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "posts"
+  [1m[36mFixture Insert (12.2ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (6.4ms)[0m  INSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+PG::UndefinedColumn: ERROR:  column "gamertag" of relation "users" does not exist
+LINE 1: INSERT INTO "users" ("first_name", "last_name", "gamertag", ...
+                                                        ^
+: INSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "posts"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)[0m
+PG::UndefinedColumn: ERROR:  column "gamertag" of relation "users" does not exist
+LINE 1: INSERT INTO "users" ("first_name", "last_name", "gamertag", ...
+                                                        ^
+: INSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "posts"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 298486374)
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+PG::UndefinedColumn: ERROR:  column "gamertag" of relation "users" does not exist
+LINE 1: INSERT INTO "users" ("first_name", "last_name", "gamertag", ...
+                                                        ^
+: INSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "posts"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 298486374)[0m
+  [1m[35mFixture Delete (0.5ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.6ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)[0m
+PG::UndefinedColumn: ERROR:  column "gamertag" of relation "users" does not exist
+LINE 1: INSERT INTO "users" ("first_name", "last_name", "gamertag", ...
+                                                        ^
+: INSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "posts"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+PG::UndefinedColumn: ERROR:  column "gamertag" of relation "users" does not exist
+LINE 1: INSERT INTO "users" ("first_name", "last_name", "gamertag", ...
+                                                        ^
+: INSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "posts"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)[0m
+PG::UndefinedColumn: ERROR:  column "gamertag" of relation "users" does not exist
+LINE 1: INSERT INTO "users" ("first_name", "last_name", "gamertag", ...
+                                                        ^
+: INSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "posts"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+PG::UndefinedColumn: ERROR:  column "gamertag" of relation "users" does not exist
+LINE 1: INSERT INTO "users" ("first_name", "last_name", "gamertag", ...
+                                                        ^
+: INSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.6ms)[0m  [1mDELETE FROM "posts"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)[0m
+PG::UndefinedColumn: ERROR:  column "gamertag" of relation "users" does not exist
+LINE 1: INSERT INTO "users" ("first_name", "last_name", "gamertag", ...
+                                                        ^
+: INSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "posts"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+PG::UndefinedColumn: ERROR:  column "gamertag" of relation "users" does not exist
+LINE 1: INSERT INTO "users" ("first_name", "last_name", "gamertag", ...
+                                                        ^
+: INSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "posts"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)[0m
+PG::UndefinedColumn: ERROR:  column "gamertag" of relation "users" does not exist
+LINE 1: INSERT INTO "users" ("first_name", "last_name", "gamertag", ...
+                                                        ^
+: INSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "posts"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:35:16', '2015-12-10 15:35:16', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+PG::UndefinedColumn: ERROR:  column "gamertag" of relation "users" does not exist
+LINE 1: INSERT INTO "users" ("first_name", "last_name", "gamertag", ...
+                                                        ^
+: INSERT INTO "users" ("first_name", "last_name", "gamertag", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:35:16', '2015-12-10 15:35:16', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "posts"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 298486374)
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (6.4ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+PG::UndefinedColumn: ERROR:  column "avatar" of relation "users" does not exist
+LINE 1: ... "password_digest", "access_token", "age", "sex", "avatar", ...
+                                                             ^
+: INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "posts"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)[0m
+PG::UndefinedColumn: ERROR:  column "avatar" of relation "users" does not exist
+LINE 1: ... "password_digest", "access_token", "age", "sex", "avatar", ...
+                                                             ^
+: INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "posts"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+PG::UndefinedColumn: ERROR:  column "avatar" of relation "users" does not exist
+LINE 1: ... "password_digest", "access_token", "age", "sex", "avatar", ...
+                                                             ^
+: INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "posts"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)[0m
+PG::UndefinedColumn: ERROR:  column "avatar" of relation "users" does not exist
+LINE 1: ... "password_digest", "access_token", "age", "sex", "avatar", ...
+                                                             ^
+: INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "posts"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 298486374)
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+PG::UndefinedColumn: ERROR:  column "avatar" of relation "users" does not exist
+LINE 1: ... "password_digest", "access_token", "age", "sex", "avatar", ...
+                                                             ^
+: INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "posts"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)[0m
+PG::UndefinedColumn: ERROR:  column "avatar" of relation "users" does not exist
+LINE 1: ... "password_digest", "access_token", "age", "sex", "avatar", ...
+                                                             ^
+: INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "posts"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+PG::UndefinedColumn: ERROR:  column "avatar" of relation "users" does not exist
+LINE 1: ... "password_digest", "access_token", "age", "sex", "avatar", ...
+                                                             ^
+: INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "posts"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)[0m
+PG::UndefinedColumn: ERROR:  column "avatar" of relation "users" does not exist
+LINE 1: ... "password_digest", "access_token", "age", "sex", "avatar", ...
+                                                             ^
+: INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "posts"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+PG::UndefinedColumn: ERROR:  column "avatar" of relation "users" does not exist
+LINE 1: ... "password_digest", "access_token", "age", "sex", "avatar", ...
+                                                             ^
+: INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "posts"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)[0m
+PG::UndefinedColumn: ERROR:  column "avatar" of relation "users" does not exist
+LINE 1: ... "password_digest", "access_token", "age", "sex", "avatar", ...
+                                                             ^
+: INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "posts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "posts"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "posts" ("user_id", "title", "written_at", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2015-11-30 23:19:41.000000', '2015-12-10 15:44:00', '2015-12-10 15:44:00', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+PG::UndefinedColumn: ERROR:  column "avatar" of relation "users" does not exist
+LINE 1: ... "password_digest", "access_token", "age", "sex", "avatar", ...
+                                                             ^
+: INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "age", "sex", "avatar", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, 'MyString', NULL, '2015-12-10 15:44:00', '2015-12-10 15:44:00', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "posts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL

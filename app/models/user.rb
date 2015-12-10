@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
 	has_attached_file :avatar, styles: { thumb: "150x150>"}
 
 	has_many :posts
+  has_many :games, :through => :user_games
+  has_many :user_games
 
 	before_validation :ensure_access_token!
 
