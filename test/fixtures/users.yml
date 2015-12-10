@@ -3,7 +3,6 @@
 one:
   first_name: MyString
   last_name: MyString
-  gamertag: MyString
   email: MyString
   password_digest: MyString
   access_token: MyString
@@ -14,7 +13,6 @@ one:
 two:
   first_name: MyString
   last_name: MyString
-  gamertag: MyString
   email: MyString
   password_digest: MyString
   access_token: MyString

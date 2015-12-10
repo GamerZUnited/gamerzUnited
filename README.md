@@ -82,7 +82,7 @@ Required parameters that you should provide:
 Headers:
 
 ```
-Auth-Token
+access_token
 ```
 
 You will receive an array of key value pairs of each post title, post content, and post id:
