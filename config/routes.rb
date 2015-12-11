@@ -30,6 +30,10 @@ Rails.application.routes.draw do
   ## Posts Routes
   resources :posts, except: [:edit, :update, :new]
 
+  ##Games Routes
+  
+  
+
   # Example resource route with options:
   #   resources :products do
   #     member do
