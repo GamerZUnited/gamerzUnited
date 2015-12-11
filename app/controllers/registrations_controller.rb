@@ -9,7 +9,8 @@ class RegistrationsController < ApplicationController
                      email: params[:email],
                      password: params[:password],
                      first_name: params[:first_name],
-                     last_name: params[:last_name]
+                     last_name: params[:last_name],
+                     gamertag: params[:gamertag]
                      )
   	if @user.save
   		render "create.json.jbuilder", status: :created
