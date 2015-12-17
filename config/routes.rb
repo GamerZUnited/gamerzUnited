@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'gamer_info/show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -30,7 +32,9 @@ Rails.application.routes.draw do
   ## Posts Routes
   resources :posts, except: [:edit, :update, :new]
 
-  ##Games Routes
+  ##Gamecard Routes
+  get "gamercard", to: "gamer_info#show" 
+  post "gamercard", to: "gamer_info#create"
   
   
 
