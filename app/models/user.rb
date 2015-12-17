@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 	has_attached_file :avatar, styles: { thumb: "150x150>"}
 
 	has_many :posts
-  has_many :user_games
+  has_one :gamer_info
 
 	before_validation :ensure_access_token!
 

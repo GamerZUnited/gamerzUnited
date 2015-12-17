@@ -1,0 +1,2 @@
+module GamerInfoHelper
+end
